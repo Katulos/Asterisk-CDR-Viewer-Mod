@@ -1,0 +1,19 @@
+services:
+  devcontainer:
+    env_file:
+      - .env
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        - WORKSPACE=${WORKSPACE}
+    command: sleep infinity
+    networks:
+      - default
+    volumes:
+      - ..:${WORKSPACE}:cached
+    ports:
+      - "8080:80"
+
+networks:
+  default:

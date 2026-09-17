@@ -1,0 +1,23 @@
+{
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.rulers": [80, 100, 120],
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/Thumbs.db": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+    },
+    "git.autofetch": true,
+    "git.enabled": true,
+    "php.validate.enable": true,
+    "php.validate.executablePath": "/usr/local/bin/php",
+    "php.validate.run": "onSave",
+    "remote.autoForwardPortsFallback": 0,
+    "search.followSymlinks": false,
+    "search.useIgnoreFiles": true,
+}

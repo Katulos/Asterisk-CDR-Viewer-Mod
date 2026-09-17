@@ -1,0 +1,36 @@
+{
+    "name": "PhpDev",
+    "dockerComposeFile": "docker-compose.yaml",
+    "remoteUser": "vscode",
+    "service": "devcontainer",
+    "workspaceFolder": "/var/www/html",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.inheritEnv": true
+            },
+            "extensions": [
+                "EditorConfig.EditorConfig",
+                "redhat.vscode-yaml",
+                "mohsen1.prettify-json",
+                "DEVSENSE.phptools-vscode"
+            ]
+        }
+    },
+    "postCreateCommand": {
+        "setupEnvironment": "ls"
+    },
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}",
+        "SSH_AUTH_SOCK": "/ssh-agent",
+        "WORKSPACE": "${containerWorkspaceFolder}"
+    },
+    "features": {},
+    "mounts": ["source=${SSH_AUTH_SOCK},target=/ssh-agent,type=bind"]
+}
