@@ -6,14 +6,14 @@
  * 
  * Основано на: https://github.com/diversen/http-send-file
  */
- 
+
 /**
  * Баги
  * 
  * Для PHP 32bit ниже версии 5.6 - ограничение на размер файла 2 ГБ. От этого скрипта это не зависит.
  * 
  */
- 
+
 class Sendfile
 {
     //public 
@@ -22,54 +22,57 @@ class Sendfile
      * @var mixed $disposition    
      */
     private $disposition = false;
-    
+
     /**
      * throttle speed in seconds
      * @var float $sec
      */
     private $sec = 0.1;
-    
+
     /**
      * bytes per $sec
      * @var int $bytes 
      */
     private $bytes = 81920;
-    
+
     /**
      * if contentType is false we try to guess it
      * @var mixed $contentType 
      */
     private $type = false;
-	
-	/**
+
+    /**
      * locale information
      * @var string $locale
      */
-	private $locale = 'ru_RU.utf-8';	
-    
+    private $locale = 'ru_RU.utf-8';
+
     /**
      * set content disposition 
      * @param type $file_name
      */
-    public function contentDisposition ($file_name = false) {
+    public function contentDisposition($file_name = false)
+    {
         $this->disposition = $file_name;
     }
-    
+
     /**
      * set throttle speed
      * @param float $sec
      * @param int $bytes
      */
-    public function throttle ($sec = 0.1, $bytes = 81920) {
+    public function throttle($sec = 0.1, $bytes = 81920)
+    {
         $this->sec = $sec;
         $this->bytes = $bytes;
     }
-    
+
     /**
      * set content mime type if false we try to guess it
      * @param string $content_type
      */
-    public function contentType ($content_type = null) {
+    public function contentType($content_type = null)
+    {
         $this->type = $content_type;
     }
 
@@ -78,27 +81,30 @@ class Sendfile
      * @param type $file
      * @return type
      */
-    private function name ($file) {
+    private function name($file)
+    {
         $info = pathinfo($file);
-        return $info['basename'];  
+        return $info['basename'];
     }
-	
+
     /**
      * get locale information
      */
-	private function getLocale () {
-		setlocale(LC_ALL, $this->locale);
-		putenv('LC_ALL=' . $this->locale);
-	}	
-	
+    private function getLocale()
+    {
+        setlocale(LC_ALL, $this->locale);
+        putenv('LC_ALL=' . $this->locale);
+    }
+
     /**
      * set locale information
      * @param string $locale
      */
-	public function setLocale ($locale = null) {
-		$this->locale = $locale;
-	}
-	
+    public function setLocale($locale = null)
+    {
+        $this->locale = $locale;
+    }
+
     /**
      * Sets-up headers and starts transfering bytes
      * 
@@ -106,13 +112,14 @@ class Sendfile
      * @param boolean $withDisposition
      * @throws Exception
      */
-    public function send($file_path, $withDisposition = TRUE) {
-		if ($this->locale) {
-			$this->getLocale();
-		}
+    public function send($file_path, $withDisposition = TRUE)
+    {
+        if ($this->locale) {
+            $this->getLocale();
+        }
 
-        if ( !is_readable($file_path) || !is_file($file_path) ) {
-			header('HTTP/1.1 404 Not Found');
+        if (!is_readable($file_path) || !is_file($file_path)) {
+            header('HTTP/1.1 404 Not Found');
             //throw new \Exception('File not found or inaccessible!');
         }
 
@@ -176,9 +183,9 @@ class Sendfile
                 fseek($file, $range);
             }
 
-            while (!feof($file) && (!connection_aborted()) && ($bytes_send < $new_length) ) {
+            while (!feof($file) && (!connection_aborted()) && ($bytes_send < $new_length)) {
                 $buffer = fread($file, $chunksize);
-                echo($buffer); //echo($buffer); // is also possible
+                echo ($buffer); //echo($buffer); // is also possible
                 flush();
                 usleep($this->sec * 1000000);
                 $bytes_send += strlen($buffer);
@@ -186,17 +193,18 @@ class Sendfile
             fclose($file);
         } else {
             header('HTTP/1.1 404 Not Found');
-			//throw new \Exception('Error - can not open file.');
+            //throw new \Exception('Error - can not open file.');
         }
         die();
     }
-    
+
     /**
      * method for getting mime type of a file
      * @param string $path
      * @return string $mime_type 
      */
-    private function getContentType($path) {
+    private function getContentType($path)
+    {
         $result = false;
         if (is_file($path) === true) {
             if (function_exists('finfo_open') === true) {
@@ -213,11 +221,12 @@ class Sendfile
         }
         return $result;
     }
-    
+
     /**
      * clean all buffers
      */
-    private function cleanAll() {
+    private function cleanAll()
+    {
         while (ob_get_level()) {
             ob_end_clean();
         }
