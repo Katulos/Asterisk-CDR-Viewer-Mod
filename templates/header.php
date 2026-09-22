@@ -52,8 +52,8 @@
 	<style>
 		/* Минимальная и максимальная ширина всего шаблона */
 		#container {
-			min-width: <?php echo Config::get('site.main.min_width') ? Config::get('site.main.min_width') : '1024px'; ?>;
-			max-width: <?php echo Config::get('site.main.max_width') ? Config::get('site.main.max_width') : '1400px'; ?>;
+			min-width: <?php echo Config::get('site.main.min_width') ?: '1024px'; ?>;
+			max-width: <?php echo Config::get('site.main.max_width') ?: '1400px'; ?>;
 		}
 	</style>
 </head>
@@ -64,29 +64,29 @@
 			<tr>
 				<td id="header_title" colspan="2">
 					<?php
-					if (Config::exists('site.main.main_section') && Config::get('site.main.main_section') != '') {
-						echo '<span><a title="Перейти в основной раздел" href="' . Config::get('site.main.main_section') . '">&#8592;</a></span>';
-					}
-					if (empty($_SERVER['REQUEST_URI'])) {
-						$url_cdr = $_SERVER['PHP_SELF'] . (empty($_SERVER['QUERY_STRING']) ? '' : '?' . $_SERVER['QUERY_STRING']);
-					} else {
-						$url_cdr = $_SERVER['REQUEST_URI'];
-					}
-					if (Config::exists('site.main.logo_path') && Config::get('site.main.logo_path') != '') {
-						echo '<a href="' . $url_cdr . '"><img src="' . Config::get('site.main.logo_path') . '"></a>';
-					} else {
-						echo '<a href="' . $url_cdr . '">' . Config::get('site.main.head') . '</a>';
-					}
-					?>
+                    if (Config::exists('site.main.main_section') && Config::get('site.main.main_section') != '') {
+                        echo '<span><a title="Перейти в основной раздел" href="' . Config::get('site.main.main_section') . '">&#8592;</a></span>';
+                    }
+	if (empty($_SERVER['REQUEST_URI'])) {
+	    $url_cdr = $_SERVER['PHP_SELF'] . (empty($_SERVER['QUERY_STRING']) ? '' : '?' . $_SERVER['QUERY_STRING']);
+	} else {
+	    $url_cdr = $_SERVER['REQUEST_URI'];
+	}
+	if (Config::exists('site.main.logo_path') && Config::get('site.main.logo_path') != '') {
+	    echo '<a href="' . $url_cdr . '"><img src="' . Config::get('site.main.logo_path') . '"></a>';
+	} else {
+	    echo '<a href="' . $url_cdr . '">' . Config::get('site.main.head') . '</a>';
+	}
+	?>
 				</td>
 			</tr>
 			<tr>
 				<td class="sub" align='right'>
 					<?php
-					if (strlen(getenv('REMOTE_USER'))) {
-						echo '<a href="index.php?action=logout">Выйти: ' . getenv('REMOTE_USER') . '</a>';
-					}
-					?>
+	if (strlen(getenv('REMOTE_USER'))) {
+	    echo '<a href="index.php?action=logout">Выйти: ' . getenv('REMOTE_USER') . '</a>';
+	}
+	?>
 				</td>
 			</tr>
 		</table>

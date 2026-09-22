@@ -475,3 +475,9 @@ composer.lock
 ##### Current project 
 inc/config/*.php
 TODO.txt
+/rector.php
+/phpcs.xml.dist
+/.php-cs-fixer.dist.php
+/.php-cs-fixer.cache
+
+

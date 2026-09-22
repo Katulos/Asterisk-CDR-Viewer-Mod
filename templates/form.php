@@ -26,46 +26,46 @@
 									<td>С&nbsp;
 										<select name="startday" id="startday">
 											<?php
-											for ($i = 1; $i <= 31; $i++) {
-												if (date('d', time()) == $i) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
-											}
+                                            for ($i = 1; $i <= 31; $i++) {
+                                                if (date('d', time()) == $i) {
+                                                    echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $i . '">' . $i . '</option>';
+                                                }
+                                            }
 											?>
 										</select>
 										<select name="startmonth" id="startmonth">
 											<?php
-											$months = array('01' => 'Январь', '02' => 'Февраль', '03' => 'Март', '04' => 'Апрель', '05' => 'Май', '06' => 'Июнь', '07' => 'Июль', '08' => 'Август', '09' => 'Сентябрь', '10' => 'Октябрь', '11' => 'Ноябрь', '12' => 'Декабрь');
+											$months = ['01' => 'Январь', '02' => 'Февраль', '03' => 'Март', '04' => 'Апрель', '05' => 'Май', '06' => 'Июнь', '07' => 'Июль', '08' => 'Август', '09' => 'Сентябрь', '10' => 'Октябрь', '11' => 'Ноябрь', '12' => 'Декабрь'];
 											foreach ($months as $i => $month) {
-												if (date('m') == $i) {
-													echo '<option value="' . $i . '" selected="selected">' . $month . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $month . '</option>';
-												}
+											    if (date('m') == $i) {
+											        echo '<option value="' . $i . '" selected="selected">' . $month . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $month . '</option>';
+											    }
 											}
 											?>
 										</select>
 										<select name="startyear" id="startyear">
 											<?php
 											for ($i = 2000; $i <= date('Y'); $i++) {
-												if (date('Y') == $i) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
+											    if (date('Y') == $i) {
+											        echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $i . '</option>';
+											    }
 											}
 											?>
 										</select>&nbsp;
 										<select name="starthour" id="starthour">
 											<?php
 											for ($i = 0; $i <= 23; $i++) {
-												if ($i == 0) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
+											    if ($i === 0) {
+											        echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $i . '</option>';
+											    }
 											}
 											?>
 										</select>
@@ -73,11 +73,11 @@
 										<select name="startmin" id="startmin">
 											<?php
 											for ($i = 0; $i <= 59; $i++) {
-												if ($i == 0) {
-													echo '<option value="' . sprintf('%02d', $i) . '" selected="selected">' . sprintf('%02d', $i) . '</option>';
-												} else {
-													echo '<option value="' . sprintf('%02d', $i) . '">' . sprintf('%02d', $i) . '</option>';
-												}
+											    if ($i === 0) {
+											        echo '<option value="' . sprintf('%02d', $i) . '" selected="selected">' . sprintf('%02d', $i) . '</option>';
+											    } else {
+											        echo '<option value="' . sprintf('%02d', $i) . '">' . sprintf('%02d', $i) . '</option>';
+											    }
 											}
 											?>
 										</select>
@@ -86,44 +86,44 @@
 										<select name="endday" id="endday">
 											<?php
 											for ($i = 1; $i <= 31; $i++) {
-												if ($i == 31) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
+											    if ($i === 31) {
+											        echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $i . '</option>';
+											    }
 											}
 											?>
 										</select>
 										<select name="endmonth" id="endmonth">
 											<?php
 											foreach ($months as $i => $month) {
-												if (date('m') == $i) {
-													echo '<option value="' . $i . '" selected="selected">' . $month . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $month . '</option>';
-												}
+											    if (date('m') == $i) {
+											        echo '<option value="' . $i . '" selected="selected">' . $month . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $month . '</option>';
+											    }
 											}
 											?>
 										</select>
 										<select name="endyear" id="endyear">
 											<?php
 											for ($i = 2000; $i <= date('Y'); $i++) {
-												if (date('Y') == $i) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
+											    if (date('Y') == $i) {
+											        echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $i . '</option>';
+											    }
 											}
 											?>
 										</select>&nbsp;
 										<select name="endhour" id="endhour">
 											<?php
 											for ($i = 0; $i <= 23; $i++) {
-												if ($i == 23) {
-													echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
-												} else {
-													echo '<option value="' . $i . '">' . $i . '</option>';
-												}
+											    if ($i === 23) {
+											        echo '<option value="' . $i . '" selected="selected">' . $i . '</option>';
+											    } else {
+											        echo '<option value="' . $i . '">' . $i . '</option>';
+											    }
 											}
 											?>
 										</select>
@@ -131,11 +131,11 @@
 										<select name="endmin" id="endmin">
 											<?php
 											for ($i = 0; $i <= 59; $i++) {
-												if ($i == 59) {
-													echo '<option value="' . sprintf('%02d', $i) . '" selected="selected">' . sprintf('%02d', $i) . '</option>';
-												} else {
-													echo '<option value="' . sprintf('%02d', $i) . '">' . sprintf('%02d', $i) . '</option>';
-												}
+											    if ($i === 59) {
+											        echo '<option value="' . sprintf('%02d', $i) . '" selected="selected">' . sprintf('%02d', $i) . '</option>';
+											    } else {
+											        echo '<option value="' . sprintf('%02d', $i) . '">' . sprintf('%02d', $i) . '</option>';
+											    }
 											}
 											?>
 										</select>
@@ -163,36 +163,36 @@
 														<input checked="checked" type="checkbox" id="id_need_html" name="need_html" value="true">&ensp;<label for="id_need_html">Поиск в базе</label><br>
 														<?php if (Config::get('display.search.csv') == (1 || 2)) { ?>
 															<div class="<?php if (Config::get('display.search.csv') == 2) {
-																			echo 'spoilers';
-																		} ?>">
+															    echo 'spoilers';
+															} ?>">
 																<input type="checkbox" id="id_need_csv" name="need_csv" value="true">&ensp;<label for="id_need_csv">CSV файл</label><br>
 															</div>
 														<?php } ?>
 														<?php if (Config::get('display.search.chart') == (1 || 2)) { ?>
 															<div class="<?php if (Config::get('display.search.chart') == 2) {
-																			echo 'spoilers';
-																		} ?>">
+															    echo 'spoilers';
+															} ?>">
 																<input type="checkbox" id="id_need_chart" name="need_chart" value="true">&ensp;<label for="id_need_chart">График звонков</label><br>
 															</div>
 														<?php } ?>
 														<?php if (Config::get('display.search.minutes_report') == (1 || 2)) { ?>
 															<div class="<?php if (Config::get('display.search.minutes_report') == 2) {
-																			echo 'spoilers';
-																		} ?>">
+															    echo 'spoilers';
+															} ?>">
 																<input type="checkbox" id="id_need_minutes_report" name="need_minutes_report" value="true">&ensp;<label for="id_need_minutes_report">Расход минут</label><br>
 															</div>
 														<?php } ?>
 														<?php if (Config::get('display.search.chart_cc') == (1 || 2)) { ?>
 															<div class="<?php if (Config::get('display.search.chart_cc') == 2) {
-																			echo 'spoilers';
-																		} ?>">
+															    echo 'spoilers';
+															} ?>">
 																<input type="checkbox" id="id_need_chart_cc" name="need_chart_cc" value="true">&ensp;<label for="id_need_chart_cc">Параллельные звонки</label><br>
 															</div>
 														<?php } ?>
 														<?php if (Config::get('display.search.asr_report') == (1 || 2)) { ?>
 															<div class="<?php if (Config::get('display.search.asr_report') == 2) {
-																			echo 'spoilers';
-																		} ?>">
+															    echo 'spoilers';
+															} ?>">
 																<input type="checkbox" id="id_need_asr_report" name="need_asr_report" value="true">&ensp;<label for="id_need_asr_report">ASR и ACD</label><br>
 															</div>
 														<?php } ?>
@@ -206,9 +206,9 @@
 															<hr>
 															<?php
 															foreach (Config::get('system.plugins') as $p_key => $p_val) {
-																echo '<input id="id_need_' . $p_val . '" type="checkbox" name="need_' . $p_val . '" value="true">&ensp;<label for="id_need_' . $p_val . '">' . $p_key . '</label><br>';
+															    echo '<input id="id_need_' . $p_val . '" type="checkbox" name="need_' . $p_val . '" value="true">&ensp;<label for="id_need_' . $p_val . '">' . $p_key . '</label><br>';
 															}
-															?>
+												    ?>
 														</td>
 													</tr>
 												<?php } ?>
@@ -236,8 +236,8 @@
 
 								<?php if (Config::get('display.search.channel') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.channel') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_channel" name="order" value="channel">&nbsp;<label for="id_order_channel">Входящий канал</label>
 										</td>
@@ -254,8 +254,8 @@
 
 								<?php if (Config::get('display.search.src') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.src') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_src" name="order" value="src">&nbsp;<label for="id_order_src">Кто звонил</label>
 										</td>
@@ -272,8 +272,8 @@
 
 								<?php if (Config::get('display.search.clid') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.clid') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_clid" name="order" value="clid">&nbsp;<label for="id_order_clid">Имя звонящего</label>
 										</td>
@@ -290,8 +290,8 @@
 
 								<?php if (Config::get('display.search.dst') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.dst') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_dst" name="order" value="dst">&nbsp;<label for="id_order_dst">Куда звонили</label>
 										</td>
@@ -308,8 +308,8 @@
 
 								<?php if (Config::get('display.search.did') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.did') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_did" name="order" value="did">&nbsp;<label for="id_order_did">DID (если есть)</label>
 										</td>
@@ -326,8 +326,8 @@
 
 								<?php if (Config::get('display.search.dstchannel') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.dstchannel') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_dstchannel" name="order" value="dstchannel">&nbsp;<label for="id_order_dstchannel">Исходящий канал</label>
 										</td>
@@ -344,8 +344,8 @@
 
 								<?php if (Config::get('display.search.accountcode') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.accountcode') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_accountcode" name="order" value="accountcode">&nbsp;<label for="id_order_accountcode">Код аккаунта</label>
 										</td>
@@ -362,8 +362,8 @@
 
 								<?php if (Config::get('display.search.userfield') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.userfield') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_userfield" name="order" value="userfield">&nbsp;<label for="id_order_userfield">Комментарий</label>
 										</td>
@@ -380,8 +380,8 @@
 
 								<?php if (Config::get('display.search.billsec') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.billsec') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_billsec" name="order" value="billsec">&nbsp;<label for="id_order_billsec">Длительность обработки звонка</label>
 										</td>
@@ -396,8 +396,8 @@
 
 								<?php if (Config::get('display.search.duration') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.duration') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td>
 											<input type="radio" id="id_order_duration" name="order" value="duration">&nbsp;<label for="id_order_duration">Длительность полная</label>
 										</td>
@@ -412,8 +412,8 @@
 
 								<?php if (Config::get('display.search.lastapp') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.lastapp') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td><input type="radio" id="id_order_lastapp" name="order" value="lastapp">&nbsp;<label for="id_order_lastapp">Приложение</label></td>
 										<td>
 											<input class="margin-left0" type="checkbox" name="lastapp_neg" id="id_lastapp_neg" value="true"> <label for="id_lastapp_neg">Не</label>&nbsp;
@@ -432,8 +432,8 @@
 
 								<?php if (Config::get('display.search.disposition') == (1 || 2)) { ?>
 									<tr class="<?php if (Config::get('display.search.disposition') == 2) {
-													echo 'spoilers';
-												} ?>">
+									    echo 'spoilers';
+									} ?>">
 										<td><input type="radio" id="id_order_disposition" name="order" value="disposition">&nbsp;<label for="id_order_disposition">Статус звонка</label></td>
 										<td>
 											<input class="margin-left0" type="checkbox" name="disposition_neg" id="id_disposition_neg" value="true"> <label for="id_disposition_neg">Не</label>&nbsp;
