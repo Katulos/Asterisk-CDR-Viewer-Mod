@@ -1,0 +1,48 @@
+services:
+  workspace:
+    hostname: workspace
+    build:
+      context: ./docker/workspace
+      args:
+        LOCALE: ${LOCALE-C}
+    environment:
+      TZ: ${TIME_ZONE-UTC}
+    tty: true
+    volumes:
+      - ../:/var/www/html
+    working_dir: /var/www/html
+
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - ${IP_ADDRESS_SETTING}80:80
+      - ${IP_ADDRESS_SETTING}443:443
+    volumes:
+      - ./docker/nginx/config:/etc/nginx/conf.d
+      - ../:/var/www/html
+    environment:
+      TZ: ${TIME_ZONE-UTC}
+
+  php:
+    image: ghcr.io/horatjp/php-fpm:8.2
+    volumes:
+      - ../:/var/www/html
+    working_dir: /var/www/html
+
+  mysql:
+    image: mysql:9.5
+    ports:
+      - ${IP_ADDRESS_SETTING}3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD-db_password}
+      MYSQL_USER: ${DB_USERNAME-db_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD-db_password}
+      MYSQL_DATABASE: ${DB_DATABASE-db_name}
+      TZ: ${TIME_ZONE-UTC}
+
+volumes:
+  mysql:
+    driver: local

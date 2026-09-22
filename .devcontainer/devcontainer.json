@@ -1,9 +1,9 @@
 {
     "name": "PhpDev",
-    "dockerComposeFile": "docker-compose.yaml",
+    "dockerComposeFile": "compose.yaml",
     "remoteUser": "vscode",
-    "service": "devcontainer",
-    "workspaceFolder": "/var/www/html",
+    "service": "workspace",
+    "workspaceFolder": "/var/www",
     "customizations": {
         "vscode": {
             "settings": {
@@ -19,7 +19,8 @@
                 "EditorConfig.EditorConfig",
                 "redhat.vscode-yaml",
                 "mohsen1.prettify-json",
-                "DEVSENSE.phptools-vscode"
+                "xdebug.php-debug",
+                "bmewburn.vscode-intelephense-client"
             ]
         }
     },

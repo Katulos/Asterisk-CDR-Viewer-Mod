@@ -6,14 +6,23 @@
     "files.exclude": {
         "**/.DS_Store": true,
         "**/.git": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "**/vendor": true,
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
+        "**/vendor": true,
     },
+    "search.exclude": {
+          "**/vendor": true
+        },
     "git.autofetch": true,
     "git.enabled": true,
+    "[php]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
     "php.validate.enable": true,
     "php.validate.executablePath": "/usr/local/bin/php",
     "php.validate.run": "onSave",
